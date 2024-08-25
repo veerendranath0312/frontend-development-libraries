@@ -73,3 +73,7 @@ footer {
   font-size: 14px;
   color: #fff;
 }
+
+footer .emoji {
+  font-size: 12px;
+}

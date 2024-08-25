@@ -42,7 +42,7 @@ function App() {
         <QuoteButtons getQuote={getQuote} randomColor={randomColor} />
       </div>
       <footer>
-        by <i>veerendranath</i>
+        made with <span className="emoji">❤️</span> by <i>veerendranath</i>
       </footer>
     </div>
   )
