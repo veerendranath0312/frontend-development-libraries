@@ -1,0 +1,126 @@
+* {
+  /* margin: 0;
+  padding: 0; */
+  box-sizing: border-box;
+}
+
+body,
+section,
+h1,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#root {
+  padding: 20px;
+  height: calc(100vh - 40px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Editor Styling */
+
+.markdown-editor,
+.markdown-previewer {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  height: inherit;
+}
+
+.markdown-editor {
+  padding: 20px;
+  overflow: auto;
+}
+
+.markdown-editor .markdown-editor__header {
+  margin: 0 0 16px 0;
+}
+
+.markdown-editor__header .markdown-editor__subtitle {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.markdown-editor .markdown-editor__textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  min-height: 200px;
+}
+
+/* Previewer Styling */
+.markdown-previewer {
+  /* overflow: scroll; */
+  overflow: auto;
+}
+
+.markdown-previewer .markdown-previewer__title {
+  background-color: #ddd;
+  padding: 20px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.markdown-previewer .markdown-previewer__content {
+  padding: 20px;
+}
+
+/* MARKDOWN STYLING */
+.markdown-previewer__content {
+  line-height: 1.5;
+}
+
+.markdown-previewer__content h1,
+.markdown-previewer__content h2 {
+  padding-bottom: 6px;
+  border-bottom: 2px solid #ddd;
+}
+
+.markdown-previewer__content img {
+  width: 100%;
+}
+
+.markdown-previewer__content pre code {
+  /* background-color: #e7e7e7; */
+  /* padding: 10px; */
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+.markdown-previewer__content p code {
+  background: #e7e7e7;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.markdown-previewer__content blockquote {
+  padding-left: 4px;
+  border-left: 3px solid #333;
+  background-color: #e7e7e7;
+}
+
+.markdown-previewer__content table {
+  border-collapse: collapse;
+}
+
+.markdown-previewer__content th,
+.markdown-previewer__content td {
+  border: 1px solid #333;
+  padding: 6px;
+}
+
+@media (max-width: 800px) {
+  #root {
+    height: 100%;
+    grid-template-columns: 1fr;
+  }
+}
