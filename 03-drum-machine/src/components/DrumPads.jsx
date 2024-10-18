@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import drumData from '../drumData'
 import DrumPad from './DrumPad'
 
-function DrumPads({ setDisplayText, bank, volume }) {
+function DrumPads({ setDisplayText, power, bank, volume }) {
   const drumPadsRef = useRef(null)
 
   useEffect(() => {
@@ -40,8 +40,8 @@ function DrumPads({ setDisplayText, bank, volume }) {
     audio.volume = volume
     audio.play()
 
-    // Setting the displayText state
-    setDisplayText(e.target.id)
+    // Updating the displayText state only when the power is on
+    power && setDisplayText(e.target.id)
   }
 
   return (
@@ -51,7 +51,8 @@ function DrumPads({ setDisplayText, bank, volume }) {
           key={drum.key}
           drum={drum}
           handleClick={handleClick}
-          bank={bank}
+          isBankActive={bank}
+          isPowerActive={power}
         />
       ))}
     </div>

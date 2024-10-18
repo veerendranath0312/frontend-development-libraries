@@ -1,14 +1,20 @@
-function DrumPad({ drum, handleClick, bank }) {
+function DrumPad({ drum, handleClick, isPowerActive, isBankActive }) {
   return (
     <div
       className="drum-pad"
-      id={bank ? drum.bankId : drum.normalId}
+      id={isBankActive ? drum.bankId : drum.normalId}
       name={drum.key}
       onClick={handleClick}
     >
       {drum.key}
       <audio
-        src={bank ? drum.bankSound : drum.normalSound}
+        src={
+          isPowerActive
+            ? isBankActive
+              ? drum.bankSound
+              : drum.normalSound
+            : '#'
+        }
         className="clip"
         id={drum.key}
       ></audio>

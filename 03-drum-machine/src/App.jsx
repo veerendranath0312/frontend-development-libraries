@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import DrumPads from './components/DrumPads'
+import Controls from './components/Controls'
+import ToggleSwitch from './components/ToggleSwitch'
+import DisplayLabel from './components/DisplayLabel'
+import Slider from './components/Slider'
 
 function App() {
   const [power, setPower] = useState(true)
@@ -14,9 +18,12 @@ function App() {
   }
 
   const toggleBank = () => {
-    const newBank = !bank
-    setBank(newBank)
-    newBank ? setDisplayText('Smooth Piano Kit') : setDisplayText('')
+    // Making sure that the user can modify the bank state only when the power is ON
+    if (power) {
+      const newBank = !bank
+      setBank(newBank)
+      newBank ? setDisplayText('Smooth Piano Kit') : setDisplayText('')
+    }
   }
 
   const handleVolumeChange = (e) => {
@@ -29,39 +36,50 @@ function App() {
   }
 
   return (
-    <div id="drum-machine">
-      <DrumPads setDisplayText={setDisplayText} bank={bank} volume={volume} />
+    <>
+      <div id="drum-machine">
+        <DrumPads
+          setDisplayText={setDisplayText}
+          power={power}
+          bank={bank}
+          volume={volume}
+        />
 
-      <div className="controls">
-        <div className="control power-control">
-          <p>Power</p>
-          <div className="toggle-btn" onClick={togglePower}>
-            <div className="inner"></div>
-          </div>
-        </div>
-        <div className="display-text">
-          <p id="display">{displayText ? displayText : <>&nbsp;</>}</p>
-        </div>
-        <div className="volume-slider">
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={volume}
-            onChange={handleVolumeChange}
-            onMouseUp={handleMouseUp}
-            onTouchEnd={handleMouseUp}
+        {/* <Controls
+        togglePower={togglePower}
+        toggleBank={toggleBank}
+        displayText={displayText}
+        volume={volume}
+        handleVolumeChange={handleVolumeChange}
+        handleMouseUp={handleMouseUp}
+        bank={bank}
+        power={power}
+      /> */}
+
+        {/* As I observed prop drilling and passing more number of props
+          I used the component composition to write more clean code
+      */}
+
+        <Controls>
+          <ToggleSwitch isActive={power} onToggle={togglePower}>
+            Power
+          </ToggleSwitch>
+          <DisplayLabel displayText={displayText} />
+          <Slider
+            volume={volume}
+            handleVolumeChange={handleVolumeChange}
+            handleMouseUp={handleMouseUp}
+            isActive={power}
           />
-        </div>
-        <div className="control bank-control">
-          <p>Bank</p>
-          <div className="toggle-btn" onClick={toggleBank}>
-            <div className="inner"></div>
-          </div>
-        </div>
+          <ToggleSwitch isActive={bank} onToggle={toggleBank}>
+            Bank
+          </ToggleSwitch>
+        </Controls>
       </div>
-    </div>
+      <footer>
+        <p>Made with 🖤 by Veerendranath | freeCodeCamp</p>
+      </footer>
+    </>
   )
 }
 
