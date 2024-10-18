@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import drumData from '../drumData'
 import DrumPad from './DrumPad'
 
-function DrumPads({ setDisplayText, bank }) {
+function DrumPads({ setDisplayText, bank, volume }) {
   const drumPadsRef = useRef(null)
 
   useEffect(() => {
@@ -22,6 +22,7 @@ function DrumPads({ setDisplayText, bank }) {
 
         const audioEl = drumPadEl.children[0]
         audioEl.currentTime = 0
+        audioEl.volume = volume
         audioEl.play()
       }
     }
@@ -31,11 +32,12 @@ function DrumPads({ setDisplayText, bank }) {
     return () => {
       window.addEventListener('keydown', handleKeyStroke)
     }
-  }, [])
+  }, [volume])
 
   const handleClick = (e) => {
     const audio = e.target.children[0]
     audio.currentTime = 0
+    audio.volume = volume
     audio.play()
 
     // Setting the displayText state
