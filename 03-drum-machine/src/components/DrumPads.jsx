@@ -26,6 +26,8 @@ function DrumPads({ setDisplayText, power, bank, volume }) {
           audioEl.currentTime = 0
           audioEl.volume = volume
           audioEl.play()
+          // Updating the displayText state only when the power is on
+          setDisplayText(drumPadEl.id)
         }
       }
     }
@@ -45,10 +47,9 @@ function DrumPads({ setDisplayText, power, bank, volume }) {
       audio.currentTime = 0
       audio.volume = volume
       audio.play()
+      // Updating the displayText state only when the power is on
+      setDisplayText(e.target.id)
     }
-
-    // Updating the displayText state only when the power is on
-    power && setDisplayText(e.target.id)
   }
 
   return (
