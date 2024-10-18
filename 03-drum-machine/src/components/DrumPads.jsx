@@ -38,7 +38,7 @@ function DrumPads({ setDisplayText, power, bank, volume }) {
     return () => {
       window.removeEventListener('keydown', handleKeyStroke)
     }
-  }, [volume, power])
+  }, [volume, power, setDisplayText])
 
   const handleClick = (e) => {
     const audio = e.target.children[0]
