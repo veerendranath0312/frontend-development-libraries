@@ -21,24 +21,31 @@ function DrumPads({ setDisplayText, power, bank, volume }) {
         )
 
         const audioEl = drumPadEl.children[0]
-        audioEl.currentTime = 0
-        audioEl.volume = volume
-        audioEl.play()
+
+        if (power) {
+          audioEl.currentTime = 0
+          audioEl.volume = volume
+          audioEl.play()
+        }
       }
     }
 
     window.addEventListener('keydown', handleKeyStroke)
 
+    // Correctly remove the event listener in the cleanup function
     return () => {
-      window.addEventListener('keydown', handleKeyStroke)
+      window.removeEventListener('keydown', handleKeyStroke)
     }
-  }, [volume])
+  }, [volume, power])
 
   const handleClick = (e) => {
     const audio = e.target.children[0]
-    audio.currentTime = 0
-    audio.volume = volume
-    audio.play()
+
+    if (power) {
+      audio.currentTime = 0
+      audio.volume = volume
+      audio.play()
+    }
 
     // Updating the displayText state only when the power is on
     power && setDisplayText(e.target.id)
