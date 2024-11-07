@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dadbf8;
+}
+
+.calc-container {
+  max-width: 320px;
+  height: 600px;
+  width: 100%;
+  background: #636272;
+  color: #dfdede;
+  display: flex;
+  flex-direction: column;
+  border-radius: 32px;
+  /* gap: 20px; */
+}
+
+.calc-container .result {
+  flex: 1;
+  background-color: #c3e4c5;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  gap: 10px;
+  border-radius: 24px;
+  color: #393b3a;
+  padding: 10px;
+  margin: 14px;
+}
+
+.calc-container .result h1 {
+  font-size: 2.5rem;
+}
+
+.calc-container .result p {
+  color: #848488;
+}
+
+.keypad-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 100%;
+  flex: 2;
+  gap: 8px;
+  overflow: hidden;
+  padding: 14px;
+}
+
+.keypad-grid .btn {
+  border-radius: 18px;
+  cursor: pointer;
+  background-color: #464759;
+  color: #dfdede;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.keypad-grid .btn:hover {
+  background-color: #464759;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.keypad-grid .btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.keypad-grid .btn-number {
+  background-color: #83819a;
+}
+
+.keypad-grid .btn-operator {
+  background-color: #f37c83;
+}
+
+.keypad-grid .btn-operator:hover {
+  background-color: #ffaa33;
+}
+
+.keypad-grid .btn-clear {
+  background-color: #8c91cd;
+}
+
+.keypad-grid .btn-clear:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+.keypad-grid .btn-clear:active {
+  background-color: #a93226; /* Even darker red when pressed */
+}
+
+.keypad-grid .btn-operator#equals:hover {
+  background-color: #27ae60;
+}
+
+.keypad-grid #clear {
+  grid-column: 1/3;
+}
+
+.keypad-grid #zero {
+  grid-column: 1/3;
+}
